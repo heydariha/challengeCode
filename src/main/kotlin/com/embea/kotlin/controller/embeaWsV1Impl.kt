@@ -20,7 +20,7 @@ class embeaWsV1Impl(val policyService: PolicyService) {
         return policyService.createPolicy(policyDto)
     }
 
-    @PutMapping("/policies")
+    @PatchMapping("/policies")
     fun updatePolicy(@RequestBody policyResponseDto: IntegratedPolicyDto): IntegratedPolicyDto {
         return policyService.updatePolicy(policyResponseDto)
     }
