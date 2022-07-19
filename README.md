@@ -46,7 +46,7 @@ In my point of view, it would be better if we would call an ``GET`` endpoint wit
 
 
 ### Update
-In order to get a policy call the ``PUT`` endpoint with following payload
+In order to get a policy call the ``PATCH`` endpoint with following payload
 ``http://localhost:9090/policyService/policies``
 ```
 {
