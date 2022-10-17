@@ -1,6 +1,6 @@
-package com.embea.kotlin.infrastructure
+package com.hadi.kotlin.infrastructure
 
-import com.embea.kotlin.domain.Policy
+import com.hadi.kotlin.domain.Policy
 import org.springframework.data.jpa.repository.JpaRepository
 import java.time.LocalDate
 import java.util.*

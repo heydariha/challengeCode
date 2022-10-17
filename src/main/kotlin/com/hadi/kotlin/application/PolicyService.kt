@@ -1,8 +1,8 @@
-package com.embea.kotlin.application
+package com.hadi.kotlin.application
 
-import com.embea.kotlin.domain.FindPolicyDto
-import com.embea.kotlin.domain.PolicyDto
-import com.embea.kotlin.domain.IntegratedPolicyDto
+import com.hadi.kotlin.domain.FindPolicyDto
+import com.hadi.kotlin.domain.PolicyDto
+import com.hadi.kotlin.domain.IntegratedPolicyDto
 
 interface PolicyService {
 

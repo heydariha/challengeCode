@@ -1,4 +1,4 @@
-package com.embea.kotlin.domain
+package com.hadi.kotlin.domain
 
 import org.hibernate.annotations.Type
 import java.io.Serializable

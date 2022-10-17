@@ -1,8 +1,8 @@
-package com.embea.kotlin.application
+package com.hadi.kotlin.application
 
-import com.embea.kotlin.domain.FindPolicyDto
-import com.embea.kotlin.domain.IntegratedPolicyDto
-import com.embea.kotlin.infrastructure.PolicyRepository
+import com.hadi.kotlin.domain.FindPolicyDto
+import com.hadi.kotlin.domain.IntegratedPolicyDto
+import com.hadi.kotlin.infrastructure.PolicyRepository
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

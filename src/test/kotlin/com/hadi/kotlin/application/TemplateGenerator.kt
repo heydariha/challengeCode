@@ -1,8 +1,8 @@
-package com.embea.kotlin.application
+package com.hadi.kotlin.application
 
-import com.embea.kotlin.domain.InsuredPersonDto
-import com.embea.kotlin.domain.IntegratedPolicyDto
-import com.embea.kotlin.domain.PolicyDto
+import com.hadi.kotlin.domain.InsuredPersonDto
+import com.hadi.kotlin.domain.IntegratedPolicyDto
+import com.hadi.kotlin.domain.PolicyDto
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.*

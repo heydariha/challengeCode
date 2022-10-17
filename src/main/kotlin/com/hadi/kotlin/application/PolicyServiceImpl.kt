@@ -1,14 +1,14 @@
-package com.embea.kotlin.application
+package com.hadi.kotlin.application
 
-import com.embea.kotlin.config.NotFoundException
-import com.embea.kotlin.domain.*
-import com.embea.kotlin.infrastructure.InsuredPersonRepository
-import com.embea.kotlin.infrastructure.PolicyRepository
+import com.hadi.kotlin.config.NotFoundException
+import com.hadi.kotlin.domain.*
+import com.hadi.kotlin.infrastructure.PolicyRepository
 import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class PolicyServiceImpl(val policyRepository: PolicyRepository, val InsuredPersonRepository: InsuredPersonRepository) : PolicyService {
+class PolicyServiceImpl(val policyRepository: PolicyRepository) :
+    PolicyService {
 
     override fun getPolicy(findPolicyDto: FindPolicyDto): IntegratedPolicyDto? {
         val policy = policyRepository.findPolicyByUuidAndStartDate(findPolicyDto.policyId, findPolicyDto.requestDate)

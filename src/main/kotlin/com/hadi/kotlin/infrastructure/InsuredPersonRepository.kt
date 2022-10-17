@@ -1,6 +1,6 @@
-package com.embea.kotlin.infrastructure
+package com.hadi.kotlin.infrastructure
 
-import com.embea.kotlin.domain.InsuredPerson
+import com.hadi.kotlin.domain.InsuredPerson
 import org.springframework.data.jpa.repository.JpaRepository
 
 

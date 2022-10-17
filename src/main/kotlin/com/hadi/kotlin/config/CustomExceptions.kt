@@ -1,4 +1,4 @@
-package com.embea.kotlin.config
+package com.hadi.kotlin.config
 
 class NotFoundException(
     override val message: String,

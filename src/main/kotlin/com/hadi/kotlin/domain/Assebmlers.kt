@@ -1,6 +1,6 @@
-package com.embea.kotlin.domain
+package com.hadi.kotlin.domain
 
-fun assembleUpdatedPolicy(policy: Policy, integratedPolicyDto:IntegratedPolicyDto): Policy {
+fun assembleUpdatedPolicy(policy: Policy, integratedPolicyDto: IntegratedPolicyDto): Policy {
     return policy.apply {
         uuid = integratedPolicyDto.policyId
         startDate = integratedPolicyDto.startDate
