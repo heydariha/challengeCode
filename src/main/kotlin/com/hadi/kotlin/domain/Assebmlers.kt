@@ -4,7 +4,7 @@ fun assembleUpdatedPolicy(policy: Policy, integratedPolicyDto: IntegratedPolicyD
     return policy.apply {
         uuid = integratedPolicyDto.policyId
         startDate = integratedPolicyDto.startDate
-        insuredPersons = integratedPolicyDto.insuredPersons!!.map { assembleInsuredPersons(it) }
+        insuredPersons = integratedPolicyDto.insuredPersons.map { assembleInsuredPersons(it) }
     }
 }
 

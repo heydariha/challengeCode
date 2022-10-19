@@ -20,7 +20,7 @@ fun createIntegratedPolicyDto(
 
 fun createPolicyDtoTemplate(): PolicyDto = PolicyDto(
     startDate = LocalDate.now(),
-insuredPersons = listOf(
+    insuredPersons = listOf(
         createInsuredPersonDtoTemplate(),
         createInsuredPersonDtoTemplate(firstName = "Daniel", secondName = "Schwarz", premium = BigDecimal.ONE)
     )
