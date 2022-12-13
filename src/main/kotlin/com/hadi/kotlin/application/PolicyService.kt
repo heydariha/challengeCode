@@ -6,7 +6,8 @@ import com.hadi.kotlin.domain.IntegratedPolicyDto
 
 interface PolicyService {
 
-    fun getPolicy(findPolicyDto: FindPolicyDto): IntegratedPolicyDto?
-    fun createPolicy(policyDto: PolicyDto): IntegratedPolicyDto
-    fun updatePolicy(integratedPolicyDto: IntegratedPolicyDto): IntegratedPolicyDto
+  fun getPolicy(): List<IntegratedPolicyDto>
+  fun getPolicy(findPolicyDto: FindPolicyDto): IntegratedPolicyDto?
+  fun createPolicy(policyDto: PolicyDto): IntegratedPolicyDto
+  fun updatePolicy(integratedPolicyDto: IntegratedPolicyDto): IntegratedPolicyDto
 }

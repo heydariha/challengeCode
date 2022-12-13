@@ -15,6 +15,11 @@ class PolicyServiceImpl(val policyRepository: PolicyRepository) :
         return policy?.let { assemblePolicyResponseDto(it) }
     }
 
+    override fun getPolicy(): List<IntegratedPolicyDto> {
+      val policy = policyRepository.findAll()
+      return policy.map { assemblePolicyResponseDto(it) }
+    }
+
     override fun createPolicy(policyDto: PolicyDto): IntegratedPolicyDto {
         val policy = assemblePolicy(policyDto)
         policy.addToInsuredPerson(policy.insuredPersons)
