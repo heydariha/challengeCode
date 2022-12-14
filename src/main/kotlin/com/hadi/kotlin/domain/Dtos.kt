@@ -4,19 +4,18 @@ import com.fasterxml.jackson.annotation.JsonFormat
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.*
-import javax.validation.constraints.Future
-import javax.validation.constraints.NotNull
-
+import javax.validation.constraints.*
 
 data class FindPolicyDto(
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @NotNull val requestDate: LocalDate,
+  @NotNull @field:Future val requestDate: LocalDate,
   @NotNull val policyId: UUID,
 )
 
 data class PolicyDto(
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @NotNull @Future val startDate: LocalDate,
+  @NotNull
+  @field:Future val startDate: LocalDate,
   @NotNull val insuredPersons: List<InsuredPersonDto>
 )
 
@@ -29,7 +28,7 @@ data class InsuredPersonDto(
 data class IntegratedPolicyDto(
   @NotNull val policyId: UUID,
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @NotNull val startDate: LocalDate,
+  @NotNull @field:Future val startDate: LocalDate,
   @NotNull val insuredPersons: List<InsuredPersonDto>,
   @NotNull val totalPremium: BigDecimal
 )

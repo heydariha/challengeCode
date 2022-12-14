@@ -30,8 +30,7 @@ class PolicyServiceImpl(val policyRepository: PolicyRepository) :
     override fun updatePolicy(integratedPolicyDto: IntegratedPolicyDto): IntegratedPolicyDto {
         val policy = assembleUpdatedPolicy(getPolicy(integratedPolicyDto.policyId)!!, integratedPolicyDto)
         policy.addToInsuredPerson(policy.insuredPersons)
-        val kir = policyRepository.save(policy)
-        return assemblePolicyResponseDto(kir)
+        return assemblePolicyResponseDto(policyRepository.save(policy))
     }
 
     private fun getPolicy(policyId: UUID): Policy? {
