@@ -9,17 +9,18 @@ import java.util.*
 
 fun createIntegratedPolicyDto(
     policyId: UUID,
-    listOfInsuredPersons: List<InsuredPersonDto> = listOf(createInsuredPersonDtoTemplate())
+    listOfInsuredPersons: List<InsuredPersonDto> = listOf(createInsuredPersonDtoTemplate()),
+    startDate: LocalDate = LocalDate.now()
 ): IntegratedPolicyDto = IntegratedPolicyDto(
     policyId = policyId,
-    startDate = LocalDate.now(),
+    startDate = startDate,
     insuredPersons = listOfInsuredPersons,
     totalPremium = BigDecimal.ONE
 )
 
 
-fun createPolicyDtoTemplate(): PolicyDto = PolicyDto(
-    startDate = LocalDate.now(),
+fun createPolicyDtoTemplate(startDate: LocalDate = LocalDate.now()): PolicyDto = PolicyDto(
+    startDate = startDate,
     insuredPersons = listOf(
         createInsuredPersonDtoTemplate(),
         createInsuredPersonDtoTemplate(firstName = "Daniel", secondName = "Schwarz", premium = BigDecimal.ONE)
@@ -31,6 +32,7 @@ fun createInsuredPersonDtoTemplate(
     secondName: String = "Heydari",
     premium: BigDecimal = BigDecimal.TEN
 ): InsuredPersonDto = InsuredPersonDto(
+    uuid = null,
     firstName = firstName,
     secondName = secondName,
     premium = premium

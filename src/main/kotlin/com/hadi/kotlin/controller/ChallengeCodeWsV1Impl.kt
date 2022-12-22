@@ -1,6 +1,6 @@
 package com.hadi.kotlin.controller
 
-import com.hadi.kotlin.application.PolicyService
+import com.hadi.kotlin.application.api.PolicyService
 import com.hadi.kotlin.domain.FindPolicyDto
 import com.hadi.kotlin.domain.IntegratedPolicyDto
 import com.hadi.kotlin.domain.PolicyDto
@@ -19,7 +19,7 @@ class ChallengeCodeWsV1Impl(val policyService: PolicyService) {
 
   @GetMapping("/policy/{requestDate}/requestDate/{policyId}/policyId")
   fun getPolicy(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                @PathVariable requestDate: LocalDate,
+                @PathVariable requestDate: LocalDate?,
                 @PathVariable policyId: UUID
   ): IntegratedPolicyDto? {
     return policyService.getPolicy(FindPolicyDto(requestDate = requestDate, policyId = policyId))

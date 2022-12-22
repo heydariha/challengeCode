@@ -1,4 +1,4 @@
-package com.hadi.kotlin.application
+package com.hadi.kotlin.application.api
 
 import com.hadi.kotlin.domain.FindPolicyDto
 import com.hadi.kotlin.domain.PolicyDto

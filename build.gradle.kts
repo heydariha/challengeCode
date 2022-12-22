@@ -24,8 +24,14 @@ dependencies {
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	runtimeOnly("com.h2database:h2")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+  implementation("org.apache.httpcomponents:httpclient:4.5.14")
+
+  runtimeOnly("com.h2database:h2")
+	testImplementation("org.springframework.boot:spring-boot-starter-test"){
+    exclude("org.junit.vintage:junit-vintage-engine")
+  }
+  testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
 tasks.withType<KotlinCompile> {

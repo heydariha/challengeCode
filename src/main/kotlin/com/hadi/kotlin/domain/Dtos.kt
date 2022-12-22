@@ -8,18 +8,19 @@ import javax.validation.constraints.*
 
 data class FindPolicyDto(
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @NotNull @field:Future val requestDate: LocalDate,
+  @NotNull @field:Future val requestDate: LocalDate?,
   @NotNull val policyId: UUID,
 )
 
 data class PolicyDto(
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   @NotNull
-  @field:Future val startDate: LocalDate,
+  @field:FutureOrPresent val startDate: LocalDate,
   @NotNull val insuredPersons: List<InsuredPersonDto>
 )
 
 data class InsuredPersonDto(
+  @NotNull val uuid: UUID?,
   @NotNull val firstName: String,
   @NotNull val secondName: String,
   @NotNull val premium: BigDecimal
@@ -28,7 +29,7 @@ data class InsuredPersonDto(
 data class IntegratedPolicyDto(
   @NotNull val policyId: UUID,
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @NotNull @field:Future val startDate: LocalDate,
+  @NotNull @field:FutureOrPresent val startDate: LocalDate,
   @NotNull val insuredPersons: List<InsuredPersonDto>,
-  @NotNull val totalPremium: BigDecimal
+  @NotNull val totalPremium: BigDecimal?
 )
