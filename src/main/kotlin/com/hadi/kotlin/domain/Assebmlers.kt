@@ -2,13 +2,6 @@ package com.hadi.kotlin.domain
 
 import java.util.*
 
-fun assembleUpdatedPolicy(policy: Policy, integratedPolicyDto: IntegratedPolicyDto): Policy {
-  return policy.apply {
-    startDate = integratedPolicyDto.startDate
-    policy.addToInsuredPerson(integratedPolicyDto.insuredPersons.map { assembleInsuredPersons(it) })
-  }
-}
-
 fun assemblePolicy(policyDto: PolicyDto): Policy = Policy(
   id = 0,
   startDate = policyDto.startDate,

@@ -14,7 +14,7 @@ import java.util.*
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-internal class ChallengeCodeWsV1ImplTest {
+internal class ChallengeCodeWsV1Test {
 
   @Autowired
   lateinit var policyRepository: PolicyRepository

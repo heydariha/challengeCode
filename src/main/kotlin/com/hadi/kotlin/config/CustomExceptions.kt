@@ -60,16 +60,6 @@ class ExceptionControllerAdvice {
     )
     return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
   }
-
-  @ExceptionHandler
-  fun handleBadRequestException(ex: BadRequestException): ResponseEntity<ErrorMessageModel> {
-
-    val errorMessage = ErrorMessageModel(
-      HttpStatus.NOT_FOUND.value(),
-      ex.detailMessage
-    )
-    return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
-  }
 }
 
 class ErrorMessageModel(
@@ -80,9 +70,4 @@ class ErrorMessageModel(
 class NotFoundException(
     override val message: String,
     val detailMessage: String?
-) : RuntimeException()
-
-class BadRequestException(
-  override val message: String,
-  val detailMessage: String?
 ) : RuntimeException()

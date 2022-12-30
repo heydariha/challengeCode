@@ -22,10 +22,10 @@ data class Policy(
   ) var uuid: UUID = UUID.randomUUID(),
   var startDate: LocalDate,
   @OneToMany(
-    mappedBy = "policy",
     cascade = [(CascadeType.ALL)],
     fetch = FetchType.EAGER
   )
+  @JoinColumn(name="policy")
   var insuredPersons: List<InsuredPerson>
 ) : Serializable {
 

@@ -1,15 +1,16 @@
 package com.hadi.kotlin.application.impl
 
 import com.hadi.kotlin.application.api.InsuredPersonService
-import com.hadi.kotlin.config.BadRequestException
 import com.hadi.kotlin.config.NotFoundException
 import com.hadi.kotlin.domain.InsuredPerson
 import com.hadi.kotlin.domain.InsuredPersonDto
 import com.hadi.kotlin.infrastructure.InsuredPersonRepository
 import org.springframework.stereotype.Component
 import java.util.*
+import javax.transaction.Transactional
 
 @Component
+@Transactional
 class InsuredPersonServiceImpl(val insuredPersonRepository: InsuredPersonRepository) : InsuredPersonService {
   override fun getInsuredPerson(uuid: UUID): InsuredPerson {
     try {
@@ -46,18 +47,5 @@ class InsuredPersonServiceImpl(val insuredPersonRepository: InsuredPersonReposit
       })
     }
     return insuredPersonList
-  }
-
-  override fun removeAllInsuredPersonByPolicyId(uuid: UUID){
-    try {
-      val insuredPerson = getInsuredPerson(uuid)
-      insuredPersonRepository.deleteByPolicy(insuredPerson.id)
-    }catch (e : Exception){
-      throw BadRequestException(
-        message = "Unable to Delete Insured Person",
-        detailMessage = "Unable to remove insured persons with Policy Id : $uuid"
-      )
-    }
-
   }
 }

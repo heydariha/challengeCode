@@ -39,17 +39,13 @@ class PolicyServiceImpl(val policyRepository: PolicyRepository,
 
   override fun updatePolicy(integratedPolicyDto: IntegratedPolicyDto): IntegratedPolicyDto {
     val existingPolicy = getPolicy(integratedPolicyDto.policyId)
-    val policy = assembleUpdatedPolicy(existingPolicy!!, integratedPolicyDto)
-//    policy.insuredPersons = listOf()
-//    policyRepository.save(policy)
-
-    val insuredPersons = insuredPersonService.assembleInsuredPersonForUpdate(integratedPolicyDto.insuredPersons)
-    policy.addToInsuredPerson(insuredPersons)
-    val result = policyRepository.save(policy)
+    existingPolicy.startDate = integratedPolicyDto.startDate
+    existingPolicy.addToInsuredPerson(insuredPersonService.assembleInsuredPersonForUpdate(integratedPolicyDto.insuredPersons))
+    val result = policyRepository.save(existingPolicy)
     return assemblePolicyResponseDto(result)
   }
 
-  private fun getPolicy(policyId: UUID): Policy? {
+  private fun getPolicy(policyId: UUID): Policy {
     return try {
       policyRepository.findByUuid(policyId)!!
     } catch (e: Exception) {
