@@ -55,7 +55,7 @@ data class InsuredPerson(
   ) var uuid: UUID = UUID.randomUUID(),
   var firstName: String,
   var secondName: String,
-  var premium: BigDecimal,
+  var premium: Double,
   @ManyToOne
   @NotNull var policy: Policy?
 ) : Serializable {

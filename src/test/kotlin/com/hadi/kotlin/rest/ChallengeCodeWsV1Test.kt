@@ -22,7 +22,7 @@ internal class ChallengeCodeWsV1Test {
   @Autowired
   lateinit var restTemplate: TestRestTemplate
 
-  val policyPath = "/policyService/policy"
+  val policyPath = "/policyService/"
 
   @Test
   fun `get all Policies test should return OK as HTTP status`() {
@@ -52,7 +52,7 @@ internal class ChallengeCodeWsV1Test {
   @Test
   fun `create Policy test with invalid start date should throw an Exception`() {
     //Given
-    val newPolicy = createPolicyDtoTemplate(LocalDate.now())
+    val newPolicy = createPolicyDtoTemplate(LocalDate.now().minusDays(1))
 
     //WHEN
     val result = restTemplate.postForEntity(policyPath, newPolicy, Exception::class.java)
@@ -68,6 +68,22 @@ internal class ChallengeCodeWsV1Test {
     val newPolicy = createPolicyDtoTemplate()
     val savedPolicy = restTemplate.postForEntity(policyPath, newPolicy, IntegratedPolicyDto::class.java)
     val getPolicyUrl = "$policyPath/${newPolicy.startDate}/requestDate/${savedPolicy.body!!.policyId}/policyId"
+
+    //WHEN
+    val foundPolicy = restTemplate.getForEntity(getPolicyUrl, IntegratedPolicyDto::class.java)
+
+    //THEN
+    assertNotNull(foundPolicy)
+    assertEquals(HttpStatus.OK, foundPolicy?.statusCode)
+    assertEquals(savedPolicy.body!!.policyId, foundPolicy.body!!.policyId)
+  }
+
+  @Test
+  fun `get a policy with null create date should go with current date and return the saved policy`() {
+    //Given
+    val newPolicy = createPolicyDtoTemplate()
+    val savedPolicy = restTemplate.postForEntity(policyPath, newPolicy, IntegratedPolicyDto::class.java)
+    val getPolicyUrl = "$policyPath/ /requestDate/${savedPolicy.body!!.policyId}/policyId"
 
     //WHEN
     val foundPolicy = restTemplate.getForEntity(getPolicyUrl, IntegratedPolicyDto::class.java)
@@ -121,6 +137,5 @@ internal class ChallengeCodeWsV1Test {
     //THEN
     assertNotNull(updatedPolicy)
     assertEquals(Exception::class.java, updatedPolicy.javaClass)
-
   }
 }
