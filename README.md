@@ -10,7 +10,7 @@
 
 ### Create Policy
 In order to create a policy call the ``POST`` endpoint with following payload
-``http://localhost:9090/policyService/policies``
+``http://SERVER:PORT/policyService/``
 payload:
 ```
 {
@@ -32,22 +32,16 @@ payload:
 
 
 ### get created policy
-In order to get a policy call the ``GET`` endpoint with following payload
-``http://localhost:9090/policyService/policies``
-```
-{
-   "requestDate":"2021-06-13",
-   "policyId":"f6eb99a2-c54e-4e3c-8ae4-75212f19ba01"
-}
-```
+In order to get a policy call the ``GET`` endpoint with following payload. 
 
-#### Note
-In my point of view, it would be better if we would call an ``GET`` endpoint with query parameters and not Json payload as it is not very Restfull
+``http://SERVER:PORT/policyService/{requestDate}/requestDate/{policyId}/policyId``
+
+or  ``http://SERVER:PORT/policyService/`` to retrieve all policies
 
 
 ### Update
 In order to get a policy call the ``PATCH`` endpoint with following payload
-``http://localhost:9090/policyService/policies``
+``http://SERVER:PORT/policyService/policies``
 ```
 {
    "startDate":"2021-06-13",
@@ -65,8 +59,8 @@ In order to get a policy call the ``PATCH`` endpoint with following payload
          "premium":20.00
       },
       {
-         "firstName":"Jack",
-         "secondName":"Doe",
+         "firstName":"Roger",
+         "secondName":"Water",
          "premium":15.90
       }
    ]
